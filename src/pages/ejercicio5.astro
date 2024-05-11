@@ -1,0 +1,394 @@
+---
+type Props = {};
+
+const {} = Astro.props;
+
+import Card from "../Components/Card.astro";
+import Modal from "../Components/Modal.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ejercicio 5</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body
+        class="w-full h-screen flex justify-center items-center flex-col overflow-x-hidden"
+    >
+        <div class="w-11/12 grid grid-cols-4 gap-x-3">
+            <Card>
+                <div
+                    id="shape"
+                    class="continer flex w-full h-full justify-center items-center flex-col"
+                >
+                    <h1>Triangulo</h1>
+
+                    <div id="figure" class="triangle"></div>
+
+                    <div id="button-container" class="flex gap-3 mt-8 w-10/12">
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="area"
+                            >Area
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="perimetro"
+                            >Perimetro
+                        </button>
+                    </div>
+                </div>
+
+                <Modal title="Ingresa los datos" clasname="modal" id="">
+                    <div class="flex justify-center flex-col items-center">
+                        <div class="divContainer">
+                            <label for="side1">Lado 1:</label>
+                            <input
+                                type="number"
+                                id="side1"
+                                name="side1"
+                                required
+                            />
+                        </div>
+                        <div class="divContainer">
+                            <label for="side2">Lado 2:</label>
+                            <input
+                                type="number"
+                                id="side2"
+                                name="side2"
+                                required
+                            />
+                        </div>
+                        <div class="divContainer">
+                            <label for="side3">Lado 3:</label>
+                            <input
+                                type="number"
+                                id="side3"
+                                name="side3"
+                                required
+                            />
+                        </div>
+
+                        <h2 id="result"></h2>
+                    </div>
+                </Modal>
+            </Card>
+
+            <Card>
+                <div
+                    id="shape"
+                    class="continer flex w-full h-full justify-center items-center flex-col"
+                >
+                    <h1>Circulo</h1>
+
+                    <div id="figure" class="circle"></div>
+
+                    <div id="button-container" class="flex gap-3 mt-8 w-10/12">
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="area"
+                            >Area
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="perimetro"
+                            >Perimetro
+                        </button>
+                    </div>
+                </div>
+
+                <Modal title="Ingresa los datos" clasname="modal" id="">
+                    <div class="flex justify-center flex-col items-center">
+                        <div class="divContainer">
+                            <label for="radio"> Radio </label>
+                            <input
+                                type="number"
+                                id="radio"
+                                name="radio"
+                                required
+                            />
+                        </div>
+                        <h2 id="result"></h2>
+                    </div>
+                </Modal>
+            </Card>
+
+            <Card>
+                <div
+                    id="shape"
+                    class="continer flex w-full h-full justify-center items-center flex-col"
+                >
+                    <h1>Rectangulo</h1>
+
+                    <div id="figure" class="rectangle"></div>
+
+                    <div id="button-container" class="flex gap-3 mt-8 w-10/12">
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="area"
+                            >Area
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="perimetro"
+                            >Perimetro
+                        </button>
+                    </div>
+                </div>
+
+                <Modal title="Ingresa los datos" clasname="modal" id="">
+                    <div class="flex justify-center flex-col items-center">
+                        <div class="divContainer">
+                            <label for="side2">Lado 1:</label>
+                            <input
+                                type="number"
+                                id="side1"
+                                name="side1"
+                                required
+                            />
+                        </div>
+                        <div class="divContainer">
+                            <label for="side2">Lado 2:</label>
+                            <input
+                                type="number"
+                                id="side2"
+                                name="side2"
+                                required
+                            />
+                        </div>
+
+                        <h2 id="result"></h2>
+                    </div>
+                </Modal>
+            </Card>
+
+            <Card>
+                <div
+                    id="shape"
+                    class="continer flex w-full h-full justify-center items-center flex-col"
+                >
+                    <h1>Cuadrado</h1>
+
+                    <div id="figure" class="square"></div>
+
+                    <div id="button-container" class="flex gap-3 mt-8 w-10/12">
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="area"
+                            >Area
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-red-500 text-white w-1/2 text-center"
+                            id="perimetro"
+                            >Perimetro
+                        </button>
+                    </div>
+                </div>
+
+                <Modal title="Ingresa los datos" clasname="modal" id="">
+                    <div class="flex justify-center flex-col items-center">
+                        <div class="divContainer">
+                            <label for="side1">Lado 1:</label>
+                            <input
+                                type="number"
+                                id="side1"
+                                name="side1"
+                                required
+                            />
+                        </div>
+                        <div class="divContainer">
+                            <label for="side2">Lado 2:</label>
+                            <input
+                                type="number"
+                                id="side2"
+                                name="side2"
+                                required
+                            />
+                        </div>
+                        <div class="divContainer">
+                            <label for="side3">Lado 3:</label>
+                            <input
+                                type="number"
+                                id="side3"
+                                name="side3"
+                                required
+                            />
+                        </div>
+                        <div class="divContainer">
+                            <label for="side2">Lado 4:</label>
+                            <input
+                                type="number"
+                                id="side4"
+                                name="side4"
+                                required
+                            />
+                        </div>
+
+                        <h2 id="result"></h2>
+                    </div>
+                </Modal>
+            </Card>
+        </div>
+    </body>
+</html>
+
+<style>
+    #shape div:not(#button-container) {
+        @apply bg-yellow-400;
+    }
+
+    .triangle {
+        @apply p-20 w-7/12;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .circle {
+        @apply p-20 w-7/12;
+        clip-path: circle(50% at 50% 50%);
+    }
+
+    .rectangle {
+        aspect-ratio: 2/1;
+        @apply w-10/12;
+    }
+
+    .square {
+        @apply p-20;
+    }
+
+    h1 {
+        @apply text-white text-2xl text-center font-semibold mb-6;
+    }
+</style>
+
+<script>
+    import {
+        areaTriangulo,
+        perimetroTriangulo,
+        areaCuadrado,
+        perimetroCuadrado,
+        areaRectangulo,
+        perimetroRectangulo,
+        perimetroCirculo,
+        areaCirculo,
+    } from "../utils/utilFunctions";
+
+    document.querySelectorAll("#card").forEach((e) => {
+        let actualOperation: "area" | "perimetro" | undefined;
+        const modal = e.querySelector(".modal");
+
+        const modalResult = modal?.querySelector("#result");
+        const ButtonCalculate = modal?.querySelector("#calcute");
+
+        modal?.querySelectorAll("#close").forEach((e) =>
+            e.addEventListener("click", () => {
+                modal.classList.remove("show");
+            }),
+        );
+
+        const figureEl = e.querySelector("#figure");
+        let figure: string | undefined | null;
+
+        if (figureEl) figure = figureEl.className;
+
+        const setActualOperation = (option: "area" | "perimetro") => {
+            actualOperation = option;
+            modal?.classList.add("show");
+        };
+
+        e.querySelector("#area")?.addEventListener("click", () =>
+            setActualOperation("area"),
+        );
+
+        e.querySelector("#perimetro")?.addEventListener("click", () =>
+            setActualOperation("perimetro"),
+        );
+
+        const side1El: HTMLInputElement | null = e.querySelector("#side1");
+        const side2El: HTMLInputElement | null = e.querySelector("#side2");
+        const side3El: HTMLInputElement | null = e.querySelector("#side3");
+        const radioEl: HTMLInputElement | null = e.querySelector("#radio");
+
+        let value1: number | undefined;
+        if (side1El) value1 == Number.parseFloat(side1El.value);
+        let value2: number | undefined;
+        if (side2El) value2 == Number.parseFloat(side2El.value);
+        let value3: number | undefined;
+        if (side3El) value3 == Number.parseFloat(side3El.value);
+        let valueRadio: number | undefined;
+        if (radioEl) valueRadio == Number.parseFloat(radioEl.value);
+
+        const has3Sides = value1 && value2 && value3;
+        const has2Sides = value1 && value2;
+
+        const getResult = () => {
+            if (modalResult) {
+                if (
+                    figure === "triangle" &&
+                    has3Sides &&
+                    actualOperation === "area"
+                )
+                    modalResult.textContent = `El area es ${areaTriangulo(value1, value2)}`;
+                else if (
+                    figure === "triangle" &&
+                    has3Sides &&
+                    actualOperation === "perimetro"
+                )
+                    modalResult.textContent = `El Perimetro es ${perimetroTriangulo(value1, value2, value3)}`;
+                else if (
+                    figure === "circle" &&
+                    valueRadio &&
+                    actualOperation === "perimetro"
+                )
+                    modalResult.textContent = `El Perimetro es ${perimetroCirculo(valueRadio)}`;
+                else if (
+                    figure === "circle" &&
+                    valueRadio &&
+                    actualOperation === "area"
+                )
+                    modalResult.textContent = `El area es ${areaCirculo(valueRadio)}`;
+                else if (
+                    figure === "square" &&
+                    value1 &&
+                    actualOperation === "perimetro"
+                )
+                    modalResult.textContent = `El area es ${areaCuadrado(value1)}`;
+                else if (
+                    figure === "square" &&
+                    value1 &&
+                    actualOperation === "perimetro"
+                )
+                    modalResult.textContent = `El Perimetro es ${perimetroCuadrado(value1)}`;
+                else if (
+                    figure === "rectangle" &&
+                    has2Sides &&
+                    actualOperation === "perimetro"
+                )
+                    modalResult.textContent = `El Perimetro es ${perimetroRectangulo(value1, value2)}`;
+                else if (
+                    figure === "rectangle" &&
+                    has2Sides &&
+                    actualOperation === "area"
+                )
+                    modalResult.textContent = `El Perimetro es ${areaRectangulo(value1, value2)}`;
+            }
+        };
+
+        if (ButtonCalculate)
+            ButtonCalculate.addEventListener("click", () => {
+                getResult();
+            });
+    });
+</script>

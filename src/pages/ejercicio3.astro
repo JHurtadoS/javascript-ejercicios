@@ -1,0 +1,144 @@
+---
+type Props = {};
+
+const {} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ejercicio3</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body
+        class="w-full h-screen flex justify-center items-center flex-col overflow-x-hidden"
+    >
+        <form id="triangleForm" class="bg-red-600 rounded-lg p-5 w-4/12">
+            <div class="divContainer">
+                <label for="side1">Lado 1:</label>
+                <input type="number" id="side1" name="side1" required />
+            </div>
+            <div class="divContainer">
+                <label for="side2">Lado 2:</label>
+                <input type="number" id="side2" name="side2" required />
+            </div>
+            <div class="divContainer">
+                <label for="side3">Lado 3:</label>
+                <input type="number" id="side3" name="side3" required />
+            </div>
+
+            <button id="button" type="button" onclick="checkTriangle()"
+                >Determinar tipo de triángulo</button
+            >
+        </form>
+        <div id="ResultContainer" class="close mt-5">
+            <h1 id="result" class="text-3xl font-semibold"></h1>
+        </div>
+    </body>
+</html>
+
+<style>
+    body {
+        @apply m-5 font-Lato;
+    }
+    label {
+        @apply text-lg font-medium text-white w-52;
+    }
+
+    input,
+    select {
+        padding: 5px 10px;
+        width: 200px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .divContainer {
+        @apply flex gap-x-3 items-center;
+    }
+
+    button {
+        @apply bg-orange-400 text-white px-4 py-2  font-semibold mx-auto block;
+    }
+
+    #ResultContainer {
+        /* display: none; */
+        opacity: 0;
+    }
+
+    @keyframes opening {
+        to {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    #ResultContainer.open {
+        animation: opening 0.5s forwards;
+    }
+</style>
+
+<script>
+    const side1Element: HTMLInputElement | null =
+        document.querySelector("#side1");
+    const side2Element: HTMLInputElement | null =
+        document.querySelector("#side2");
+    const side3Element: HTMLInputElement | null =
+        document.querySelector("#side3");
+
+    const ResultElement: HTMLElement | null =
+        document.querySelector("#ResultContainer");
+
+    const HeadingElement: HTMLElement | null | undefined =
+        ResultElement?.querySelector("h1");
+
+    const button = document.querySelector("#button");
+
+    function checkTriangle(
+        side1: HTMLInputElement,
+        side2: HTMLInputElement,
+        side3: HTMLInputElement,
+        ResultElement: HTMLElement,
+        HeadingElement: HTMLElement,
+    ) {
+        ResultElement.classList.add("open");
+        if (side1.value === side2.value && side2.value === side3.value) {
+            HeadingElement.textContent = "El triángulo es equilátero.";
+        } else if (
+            side1.value === side2.value ||
+            side1.value === side3.value ||
+            side2.value === side3.value
+        ) {
+            HeadingElement.textContent = "El triángulo es isósceles.";
+        } else {
+            HeadingElement.textContent = "El triángulo es escaleno.";
+        }
+    }
+
+    if (
+        button &&
+        side1Element &&
+        side2Element &&
+        side3Element &&
+        ResultElement &&
+        HeadingElement
+    ) {
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            checkTriangle(
+                side1Element,
+                side2Element,
+                side3Element,
+                ResultElement,
+                HeadingElement,
+            );
+        });
+    }
+</script>

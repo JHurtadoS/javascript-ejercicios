@@ -1,0 +1,159 @@
+---
+type Props = {};
+
+const {} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ejercicio 4</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body
+        class="w-full h-screen flex justify-center items-center flex-col overflow-x-hidden"
+    >
+        <form id="teacherForm" class="bg-red-600 rounded-lg p-5 w-4/12">
+            <div class="divContainer">
+                <label for="names">Nombre:</label>
+                <select id="names" name="names">
+                    <option value="John">John</option>
+                    <option value="Jane">Jane</option>
+                    <option value="Alice">Alice</option>
+                </select>
+            </div>
+            <div class="divContainer">
+                <label for="lastnames">Apellido:</label>
+                <select id="lastnames" name="lastnames">
+                    <option value="Doe">Doe</option>
+                    <option value="Smith">Smith</option>
+                    <option value="Johnson">Johnson</option>
+                </select>
+            </div>
+            <div class="divContainer">
+                <label for="activities">Materia:</label>
+                <select id="activities" name="activities">
+                    <option value="Math">Math</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                </select>
+            </div>
+            <button type="button" onclick="checkSelection()"
+                >Comprobar selección</button
+            >
+        </form>
+    </body>
+
+    <div id="ResultContainer" class="close mt-5">
+        <h1 id="result" class="text-3xl font-semibold"></h1>
+    </div>
+</html>
+
+<style>
+    body {
+        @apply m-5 font-Lato;
+    }
+    label {
+        @apply text-lg font-medium text-white w-52;
+    }
+
+    input,
+    select {
+        padding: 5px 10px;
+        width: 200px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .divContainer {
+        @apply flex gap-x-3 items-center;
+    }
+
+    button {
+        @apply bg-orange-400 text-white px-4 py-2  font-semibold mx-auto block;
+    }
+
+    #ResultContainer {
+        /* display: none; */
+        opacity: 0;
+    }
+
+    @keyframes opening {
+        to {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    #ResultContainer.open {
+        animation: opening 0.5s forwards;
+    }
+</style>
+
+<script>
+    const selectedName: HTMLInputElement | null =
+        document.querySelector("#names");
+    const selectedLastname: HTMLInputElement | null =
+        document.querySelector("#lastnames");
+    const selectedActivity: HTMLInputElement | null =
+        document.querySelector("#activities");
+    const resultContainer: HTMLElement | null =
+        document.querySelector("#ResultContainer");
+    const resultText: HTMLElement | null | undefined =
+        resultContainer?.querySelector("#result");
+    const button = document.querySelector("button");
+
+    function checkSelection(
+        selectedName: HTMLInputElement,
+        selectedLastname: HTMLInputElement,
+        selectedActivity: HTMLInputElement,
+        resultContainer: HTMLElement,
+        resultText: HTMLElement,
+    ) {
+        const correctName = "Jane";
+        const correctLastname = "Smith";
+        const correctActivity = "Science";
+
+        if (
+            selectedName.value === correctName &&
+            selectedLastname.value === correctLastname &&
+            selectedActivity.value === correctActivity
+        ) {
+            console.log("wenas");
+            resultText.innerText = "La respuesta es correcta.";
+        } else {
+            console.log("wenas");
+
+            resultText.innerText = "La respuesta es incorrecta.";
+        }
+
+        resultContainer.classList.add("open");
+    }
+
+    if (
+        button &&
+        selectedName &&
+        selectedLastname &&
+        selectedActivity &&
+        resultContainer &&
+        resultText
+    ) {
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            checkSelection(
+                selectedName,
+                selectedLastname,
+                selectedActivity,
+                resultContainer,
+                resultText,
+            );
+        });
+    }
+</script>

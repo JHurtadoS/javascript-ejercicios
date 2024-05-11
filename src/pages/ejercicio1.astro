@@ -1,0 +1,132 @@
+---
+type Props = {};
+
+const {} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ejercicio 1</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body
+        class="w-full h-screen flex justify-center items-center flex-col overflow-x-hidden"
+    >
+        <form id="stringForm" class="bg-red-600 rounded-lg p-5 w-4/12">
+            <h1 class="text-2xl py-5 text-white font-semibold text-center mb-5">
+                Manipulación de String
+            </h1>
+            <div class="divContainer">
+                <label for="word">Ingrese una palabra:</label>
+                <input type="text" id="word" name="word" required />
+            </div>
+
+            <div class="divContainer">
+                <label for="option">Seleccione una opción:</label>
+                <select id="option" name="option">
+                    <option value="length">Longitud de la palabra</option>
+                    <option value="uppercase">Convertir a mayúsculas</option>
+                    <option value="lowercase">Convertir a minúsculas</option>
+                    <option value="firstchar">Primer carácter</option>
+                </select>
+            </div>
+            <br /><br />
+            <button type="button">Mostrar resultado</button>
+        </form>
+        <div id="ResultContainer" class="close mt-5">
+            <h1 id="result" class="text-3xl font-semibold"></h1>
+        </div>
+    </body>
+</html>
+<style>
+    body {
+        @apply m-5 font-Lato;
+    }
+    label {
+        @apply text-lg font-medium text-white w-52;
+    }
+
+    input,
+    select {
+        padding: 5px;
+        width: 200px;
+    }
+
+    .divContainer {
+        @apply flex gap-x-3;
+    }
+
+    button {
+        @apply bg-orange-400 text-white px-4 py-2  font-semibold mx-auto block;
+    }
+
+    #ResultContainer {
+        /* display: none; */
+        opacity: 0;
+    }
+
+    @keyframes opening {
+        to {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    #ResultContainer.open {
+        animation: opening 0.5s forwards;
+    }
+</style>
+
+<script>
+    const word: HTMLInputElement | null = document.querySelector("#word");
+    const option: HTMLInputElement | null = document.querySelector("#option");
+    const resultContainer: HTMLInputElement | null =
+        document.querySelector("#ResultContainer");
+    console.log(resultContainer);
+    const ProcessString = (
+        option: HTMLInputElement | null,
+        word: HTMLInputElement | null,
+    ) => {
+        if (option && resultContainer && word) {
+            resultContainer.classList.add("open");
+
+            const resultElement = resultContainer.querySelector("h1");
+            if (resultElement) {
+                switch (option.value) {
+                    case "length":
+                        resultElement.textContent = `La longitud de la palabra "${word.value}" es ${word.value.length}.`;
+                        break;
+                    case "uppercase":
+                        resultElement.textContent = `La palabra "${word.value}" en mayúsculas es "${word.value.toUpperCase()}".`;
+                        break;
+                    case "lowercase":
+                        resultElement.textContent = `La palabra "${word.value}" en minúsculas es "${word.value.toLowerCase()}".`;
+                        break;
+                    case "firstchar":
+                        resultElement.textContent = `El primer carácter de la palabra "${word.value}" es "${word.value.charAt(0)}".`;
+                        break;
+                    default:
+                        resultElement.textContent =
+                            "Seleccione una opción válida.";
+
+                        console.log(resultElement);
+                }
+            }
+        }
+    };
+
+    const button = document.querySelector("button");
+    if (button)
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            ProcessString(option, word);
+        });
+</script>
